@@ -1,11 +1,19 @@
 package edu.hw1;
+
 public class Task1 {
-    public int videoLengthToSeconds( String length){
+    public int videoLengthToSeconds(String length) {
         String[] splittedLenght = length.split(":");
+        if (splittedLenght.length != 2) {
+            return -1;
+        }
         int videoLenght;
         int sec = Integer.parseInt(splittedLenght[1]);
         int min = Integer.parseInt(splittedLenght[0]);
-        videoLenght = (sec < 0 || sec > 60)?-1:(min*60+sec);
+        if (sec < 0 || sec > 60) {
+            videoLenght = -1;
+        } else {
+            videoLenght = min * 60 + sec;
+        }
         return videoLenght;
     }
 }

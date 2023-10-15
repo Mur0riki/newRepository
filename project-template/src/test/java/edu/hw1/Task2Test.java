@@ -1,8 +1,8 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Task2Test {
 
@@ -10,25 +10,26 @@ class Task2Test {
 
     @BeforeEach
     void setUp() {
-        task =new Task2();
+        task = new Task2();
 
     }
 
     @Test
-    void numberIsZero(){
+    void numberIsZero() {
         int count = task.countDigit(0);
-        Assertions.assertEquals(1,count);
-    }
-    @Test
-    void numberIsPositive(){
-        int count = task.countDigit(15);
-        Assertions.assertEquals(2,count);
+        assertEquals(1, count);
     }
 
     @Test
-    void numberIsNegative(){
+    void numberIsPositive() {
+        int count = task.countDigit(15);
+        assertEquals(2, count);
+    }
+
+    @Test
+    void numberIsNegative() {
         int count = task.countDigit(-15);
-        Assertions.assertEquals(2,count);
+        assertEquals(2, count);
     }
 
 }

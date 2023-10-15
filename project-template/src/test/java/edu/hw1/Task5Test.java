@@ -1,8 +1,9 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Task5Test {
 
@@ -10,42 +11,48 @@ class Task5Test {
 
     @BeforeEach
     void setUp() {
-        task =new Task5();
+        task = new Task5();
     }
 
     @Test
-    void test1(){
+    void test1() {
         boolean flag = task.isPalindrome(11211230);
-        Assertions.assertTrue(flag);
+        assertTrue(flag);
     }
+
     @Test
-    void test2(){
+    void test2() {
         boolean flag = task.isPalindrome(13001120);
-        Assertions.assertTrue(flag);
+        assertTrue(flag);
     }
+
     @Test
-    void test3(){
+    void test3() {
         boolean flag = task.isPalindrome(23336014);
-        Assertions.assertTrue(flag);
+        assertTrue(flag);
     }
+
     @Test
-    void test4(){
+    void test4() {
         boolean flag = task.isPalindrome(11);
-        Assertions.assertTrue(flag);
+        assertTrue(flag);
     }
+
     @Test
-    void test5(){
+    void test5() {
         boolean flag = task.isPalindrome(1);
-        Assertions.assertFalse(flag);
+        assertFalse(flag);
     }
+
     @Test
-    void test6(){
+    void test6() {
         boolean flag = task.isPalindrome(132);
-        Assertions.assertFalse(flag);
+        assertFalse(flag);
     }
+
     @Test
-    void test7(){
+    void test7() {
         boolean flag = task.isPalindrome(5678);
-        Assertions.assertFalse(flag);
+        assertFalse(flag);
     }
 }
