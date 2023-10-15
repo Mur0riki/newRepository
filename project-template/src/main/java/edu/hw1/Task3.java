@@ -14,8 +14,6 @@ public class Task3 {
             if (count < min2) min2 = count;
             if (count > max2) max2 = count;
         }
-        if ((min1 > min2)&&(max1 < max2))
-            return true;
-        return false;
+        return (min1 > min2) && (max1 < max2);
     }
 }

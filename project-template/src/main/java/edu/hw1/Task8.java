@@ -24,10 +24,6 @@ public class Task8 {
     }
     private static boolean isValid(int x, int y)
     {
-        if (x < 0 || y < 0 || x >= 8 || y >= 8) {
-            return false;
-        }
-
-        return true;
+        return x >= 0 && y >= 0 && x < 8 && y < 8;
     }
 }
