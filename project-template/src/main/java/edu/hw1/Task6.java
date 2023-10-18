@@ -10,6 +10,12 @@ public class Task6 {
     }
 
     public int countK(int digit, int countkk) {
+        if (digit == 6174){
+            return 0;
+        }
+        while(digit < 1000){
+            digit*=10;
+        }
         String numberString = Integer.toString(digit);
         char[] charArray = numberString.toCharArray();
 
@@ -27,7 +33,7 @@ public class Task6 {
             }
         }
         if (!flag) {
-            return 0;
+            return -1;
         }
         Arrays.sort(firstDigit);
         Integer[] arr = Arrays.stream(secondDigit).boxed().toArray(Integer[]::new);

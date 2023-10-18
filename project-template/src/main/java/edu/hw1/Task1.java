@@ -10,10 +10,8 @@ public class Task1 {
         int sec = Integer.parseInt(splittedLenght[1]);
         int min = Integer.parseInt(splittedLenght[0]);
         if (sec < 0 || sec > 60) {
-            videoLenght = -1;
-        } else {
-            videoLenght = min * 60 + sec;
+            return -1;
         }
-        return videoLenght;
+        return min * 60 + sec;
     }
 }

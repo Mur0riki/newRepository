@@ -40,6 +40,16 @@ class Task6Test {
     @Test
     void test5() {
         int answer = task.countK(1111);
+        assertEquals(-1, answer);
+    }
+    @Test
+    void test6() {
+        int answer = task.countK(1112);
+        assertEquals(5, answer);
+    }
+    @Test
+    void test7() {
+        int answer = task.countK(6174);
         assertEquals(0, answer);
     }
 }
