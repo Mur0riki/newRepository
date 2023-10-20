@@ -55,7 +55,6 @@ public class HangmanGame {
         if (tries == MAX_TRIES) {
             System.out.println("Игра окончена! Вы проиграли. Загаданное слово: " + secretWord);
         }
-
         scanner.close();
     }
 
