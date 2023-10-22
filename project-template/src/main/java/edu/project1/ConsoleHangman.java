@@ -15,7 +15,7 @@ public class ConsoleHangman {
             }
             if (guess.length() == 1) {
                 char letter = guess.charAt(0);
-                if (game.guessResult(letter)){
+                if (game.guessResult(letter)) {
                     System.out.println("Поздравляю, вы угадали букву!");
                 } else {
                     System.out.println("Упс, неправильная буква. Осталось попыток: " + game.getAttempts());
@@ -28,10 +28,11 @@ public class ConsoleHangman {
                 break;
             }
         }
-        if(!game.stillPlayable()){
+        if (!game.stillPlayable()) {
             System.out.println("к сожалению вы проиграли.");
         }
     }
+
     public static void main(String[] args) {
         ConsoleHangman game = new ConsoleHangman();
         game.play();

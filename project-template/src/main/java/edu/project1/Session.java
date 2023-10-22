@@ -5,24 +5,27 @@ class Session implements Dictionary {
     private char[] userAnswer;
     private final int maxAttempts;
     private int attempts;
-    Session(){
+
+    Session() {
         this.answer = getRandomword();
         this.userAnswer = new char[(this.answer.length())];
         this.maxAttempts = this.answer.length();
         this.attempts = 0;
     }
-    int getAttempts(){
+
+    int getAttempts() {
         return maxAttempts - attempts;
     }
 
-    char[] getUserAnswer(){
+    char[] getUserAnswer() {
         return userAnswer;
     }
 
-    boolean stillPlayable(){
+    boolean stillPlayable() {
         return (attempts < maxAttempts);
     }
-    boolean checkWin(){
+
+    boolean checkWin() {
         if (String.valueOf(userAnswer).equalsIgnoreCase(answer)) {
             System.out.println("Поздравляю, вы выиграли! Загаданное слово: " + answer);
             return true;
@@ -30,7 +33,7 @@ class Session implements Dictionary {
         return false;
     }
 
-    boolean guessResult(char letter){
+    boolean guessResult(char letter) {
         boolean found = false;
         for (int i = 0; i < answer.length(); i++) {
             if (answer.charAt(i) == letter) {
@@ -38,12 +41,13 @@ class Session implements Dictionary {
                 found = true;
             }
         }
-        if(!found) {
+        if (!found) {
             attempts++;
         }
         return found;
     }
-        @Override
+
+    @Override
     public String getRandomword() {
         return WORDS[(int) (Math.random() * WORDS.length)];
     }
