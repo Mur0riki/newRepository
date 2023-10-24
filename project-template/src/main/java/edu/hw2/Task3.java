@@ -1,13 +1,13 @@
 package edu.hw2;
 
 public class Task3 {
-    public interface Connection extends AutoCloseable {
+    interface Connection extends AutoCloseable {
         void execute(String command);
 
         void close() throws Exception;
     }
 
-    public class StableConnection implements Connection {
+    class StableConnection implements Connection {
 
         @Override
         public void execute(String command) {
@@ -18,11 +18,13 @@ public class Task3 {
         }
     }
 
-    public class FaultyConnection implements Connection {
+    class FaultyConnection implements Connection {
 
         @Override
         public void execute(String command) {
-            throw new ConnectionException();
+            if (Math.random() % 2 == 0) {
+                throw new ConnectionException();
+            }
         }
 
         public void close() throws Exception {
@@ -30,11 +32,11 @@ public class Task3 {
         }
     }
 
-    public interface ConnectionManager {
+    interface ConnectionManager {
         Connection getConnection();
     }
 
-    public class DefaultConnectionManager implements ConnectionManager {
+    class DefaultConnectionManager implements ConnectionManager {
         @Override
         public Connection getConnection() {
 
@@ -45,17 +47,33 @@ public class Task3 {
         }
     }
 
-    public class FaultyConnectionManager implements ConnectionManager {
+    class FaultyConnectionManager implements ConnectionManager {
         @Override
         public Connection getConnection() {
             return new FaultyConnection();
         }
     }
 
-    public class ConnectionException extends RuntimeException {
+    class ConnectionException extends RuntimeException {
+
+        public ConnectionException() {
+            super();
+        }
+
+        public ConnectionException(String message) {
+            super(message);
+        }
+
+        public ConnectionException(Throwable cause) {
+            super(cause);
+        }
+
+        public ConnectionException(String message, Throwable cause) {
+            super(message, cause);
+        }
     }
 
-    public final class PopularCommandExecutor {
+    final class PopularCommandExecutor {
         private final ConnectionManager manager;
         private final int maxAttempts;
 
@@ -70,21 +88,23 @@ public class Task3 {
 
         void tryExecute(String command) {
             ConnectionException exception = null;
-            boolean executed = false;
             try (Connection connection = this.manager.getConnection();) {
-                for (int j = 0; j < maxAttempts && !executed; j++) {
+                for (int j = 0; j < maxAttempts; j++) {
                     try {
                         connection.execute(command);
-                        executed = true;
                         break;
                     } catch (ConnectionException e) {
-                        exception = e;
+                        if (exception == null) {
+                            exception = e;
+                        } else {
+                            exception.addSuppressed(e);
+                        }
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (!executed) {
+            if (exception != null) {
                 throw exception;
             }
         }
