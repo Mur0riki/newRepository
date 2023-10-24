@@ -1,4 +1,4 @@
-package edu.project1;
+/*package edu.project1;
 
 class Session implements Dictionary {
     private final String answer;
@@ -52,3 +52,5 @@ class Session implements Dictionary {
         return WORDS[(int) (Math.random() * WORDS.length)];
     }
 }
+
+ */
