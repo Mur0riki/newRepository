@@ -15,25 +15,25 @@ class Task1Test {
 
     @Test
     void test1(){
-        var two = new edu.hw2.Task1.Expr.Constant(2);
+        var two = new edu.hw2.Constant(2);
         Assertions.assertEquals(2,two.evaulate());
     }
 
     @Test
     void test2(){
-        var negOne = new edu.hw2.Task1.Expr.Negate(new edu.hw2.Task1.Expr.Constant(1));
+        var negOne = new edu.hw2.Negate(new edu.hw2.Constant(1));
         Assertions.assertEquals(-1,negOne.evaulate());
     }
 
     @Test
     void test3(){
-        var two = new edu.hw2.Task1.Expr.Constant(2);
-        var four = new edu.hw2.Task1.Expr.Constant(4);
-        var negOne = new edu.hw2.Task1.Expr.Negate(new edu.hw2.Task1.Expr.Constant(1));
-        var sumTwoFour = new edu.hw2.Task1.Expr.Addition(two, four);
-        var mult = new edu.hw2.Task1.Expr.Multiplication(sumTwoFour, negOne);
-        var exp = new edu.hw2.Task1.Expr.Exponent(mult, 2);
-        var res = new edu.hw2.Task1.Expr.Addition(exp, new edu.hw2.Task1.Expr.Constant(1));
+        var two = new edu.hw2.Constant(2);
+        var four = new edu.hw2.Constant(4);
+        var negOne = new edu.hw2.Negate(new edu.hw2.Constant(1));
+        var sumTwoFour = new edu.hw2.Addition(two, four);
+        var mult = new edu.hw2.Multiplication(sumTwoFour, negOne);
+        var exp = new edu.hw2.Exponent(mult, 2);
+        var res = new edu.hw2.Addition(exp, new edu.hw2.Constant(1));
         Assertions.assertEquals(37,res.evaulate());
     }
 }

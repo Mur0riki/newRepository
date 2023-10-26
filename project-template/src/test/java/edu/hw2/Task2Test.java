@@ -14,13 +14,13 @@ class Task2Test {
 
     @Test
     void test1() {
-        Task2.Rectangle rect = new Task2.Rectangle(10, 20);
+        Rectangle rect = new Rectangle(10, 20);
         Assertions.assertEquals(200, rect.area());
     }
 
     @Test
     void test2() {
-        Task2.Rectangle rect = new Task2.Square(10);
+        Rectangle rect = new Square(10);
         Assertions.assertEquals(100, rect.area());
     }
 }

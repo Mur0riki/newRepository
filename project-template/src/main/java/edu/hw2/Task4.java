@@ -7,7 +7,6 @@ public class Task4 {
         System.out.println("Class Name: " + info.getClassName());
         System.out.println("Method Name: " + info.getMethodName());
     }
-
     public static CallingInfo callingInfo() {
 // Получение стека вызовов
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
@@ -19,14 +18,12 @@ public class Task4 {
 // Возвращение экземпляра CallingInfo с полученными данными
         return new CallingInfo(className, methodName);
     }
-
-    record CallingInfo(String className, String methodName) {
-        public String getClassName() {
-            return className;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
+}
+record CallingInfo(String className, String methodName) {
+    public String getClassName() {
+        return className;
+    }
+    public String getMethodName() {
+        return methodName;
     }
 }
