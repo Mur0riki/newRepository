@@ -3,20 +3,21 @@ package edu.project1;
 public class ConsoleHangman {
     Player player;
     String word;
+    Board board;
 
-    ConsoleHangman(Player player, String guessedWord) {
+    ConsoleHangman(RandomPlayer player, Board board) {
         this.player = player;
-        this.word = guessedWord;
+        this.board = board;
+        this.word = board.getAnswer();
     }
 
     void play() {
         if (this.word.length() < 1) {
             return;
         }
-        Board board = new Board(this.word);
         System.out.println("Добро пожаловать в игру \"Виселица\".Если желаете закончить досрочно напишите \"exit\"");
         while (board.stillPlayable()) {
-            int i = board.getSymbol();
+            int i = player.nextMove(board);
             if (i == -1) {
                 break;
             } else if(i == -2){

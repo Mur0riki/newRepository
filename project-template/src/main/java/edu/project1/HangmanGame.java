@@ -14,6 +14,11 @@ public class HangmanGame {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите слово которое нужно будет угадывать.");
-        new ConsoleHangman(new HumanPlayer("Josh"), in.nextLine()).play();
+        Board board = new Board(in.nextLine());
+        RandomPlayer player = new RandomPlayer();
+        ConsoleHangman session = new ConsoleHangman(player,board);
+        while (board.stillPlayable()){
+            session.play();
+        }
     }
 }
