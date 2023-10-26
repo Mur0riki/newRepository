@@ -1,44 +1,45 @@
 package edu.hw2;
 
 public class Task1 {
-    sealed interface Expr {
-        double evaulate();
+}
 
-        record Constant(double value) implements Expr {
-            @Override
-            public double evaulate() {
-                return value;
-            }
-        }
+sealed interface Expr {
+    double evaulate();
+}
 
-        record Negate(Expr value) implements Expr {
+record Constant(double value) implements Expr {
+    @Override
+    public double evaulate() {
+        return value;
+    }
+}
 
-            @Override
-            public double evaulate() {
-                return (-value.evaulate());
-            }
-        }
+record Negate(Expr value) implements Expr {
 
-        record Exponent(Expr value, int exponent) implements Expr {
-            @Override
-            public double evaulate() {
-                return Math.pow(value.evaulate(), exponent);
-            }
-        }
+    @Override
+    public double evaulate() {
+        return (-value.evaulate());
+    }
+}
 
-        record Addition(Expr firstValue, Expr secondValue) implements Expr {
+record Exponent(Expr value, int exponent) implements Expr {
+    @Override
+    public double evaulate() {
+        return Math.pow(value.evaulate(), exponent);
+    }
+}
 
-            @Override
-            public double evaulate() {
-                return firstValue.evaulate() + secondValue.evaulate();
-            }
-        }
+record Addition(Expr firstValue, Expr secondValue) implements Expr {
 
-        record Multiplication(Expr firstValue, Expr secondValue) implements Expr {
-            @Override
-            public double evaulate() {
-                return firstValue.evaulate() * secondValue.evaulate();
-            }
-        }
+    @Override
+    public double evaulate() {
+        return firstValue.evaulate() + secondValue.evaulate();
+    }
+}
+
+record Multiplication(Expr firstValue, Expr secondValue) implements Expr {
+    @Override
+    public double evaulate() {
+        return firstValue.evaulate() * secondValue.evaulate();
     }
 }
