@@ -1,8 +1,6 @@
 package edu.hw2;
 
-public class Task2 {
-}
- class Rectangle {
+class Rectangle {
     private final int width;
     private final int height;
 
@@ -27,19 +25,4 @@ public class Task2 {
     public double area() {
         return width * height;
     }
-}
-
- class Square extends Rectangle {
-    private final int width = 0;
-    private final int height = 0;
-    private final int size;
-
-    Square(int size) {
-        this.size = size;
-    }
-
-    @Override public double area() {
-        return size * size;
-    }
-
 }

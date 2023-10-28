@@ -1,18 +1,9 @@
 package edu.hw2;
 
-import edu.hw1.Task1;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class Task1Test {
-    private Task1 task;
-
-    @BeforeEach
-    void setUp() {
-        task = new Task1();
-    }
-
     @Test
     void test1(){
         var two = new edu.hw2.Constant(2);
