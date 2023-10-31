@@ -23,8 +23,7 @@ import java.util.PriorityQueue;
         PriorityQueue<Stock> stockPriorityQueue;
 
         public MosByrzha() {
-            Comparator<Stock> comparator = (o1, o2) -> (o2.getValue() - o1.getValue());
-            stockPriorityQueue = new PriorityQueue<Stock>(comparator);
+            stockPriorityQueue = new PriorityQueue<>(Comparator.comparingDouble(Stock::getValue));
         }
 
         @Override
