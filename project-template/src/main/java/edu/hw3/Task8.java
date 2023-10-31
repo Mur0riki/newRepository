@@ -8,7 +8,7 @@ import java.util.ListIterator;
 class BackwardIterator<T> implements Iterator {
     private final ListIterator listIterator;
 
-    public BackwardIterator(Collection collection) {
+    public BackwardIterator(Collection<T> collection) {
         List list = List.copyOf(collection);
         this.listIterator = list.listIterator(list.size());
     }

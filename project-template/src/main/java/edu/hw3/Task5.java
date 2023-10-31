@@ -1,66 +1,31 @@
 package edu.hw3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Task5 {
     public static void main(String[] args) {
-        String[] array = new String[] {"John Locke", "Thomas Aquinas", "David Hume", "Rene Descartes"};
-        ArrayList<Contact> contacts = new ArrayList<>(array.length);
+        ArrayList<Contact> contacts = new ArrayList<>();
+        contacts.add(new Contact("Zxc","Ghoul"));
+        contacts.add(new Contact("NotZxc","Ghoul"));
         Task5 task5 = new Task5();
-        contacts = task5.parseContact(array,"DESC");
+        parseContact(contacts,"DESC");
         for(Contact contact:contacts){
             System.out.println(contact.getName() + " " + contact.getSurname());
         }
     }
-    public ArrayList<Contact> parseContact(String[] array, String type) {
-        ArrayList<Contact> contacts = new ArrayList<>(array.length);
+    public static void parseContact(ArrayList<Contact> array, String type) {
+        final Comparator<Contact> ASC = Comparator
+            .comparing(Contact::getSurname)
+            .thenComparing(Contact::getName);
+        final Comparator<Contact> DESC = ASC.reversed();
         if (type.equals("ASC")) {
-            Arrays.sort(array, new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    String[] splittedLine = o1.split(" ");
-                    String[] splittedLine2 = o2.split(" ");
-                    if ((splittedLine2.length > 2) || (splittedLine2.length == 0) || (splittedLine.length > 2) ||
-                        (splittedLine.length == 0)) {
-                        throw new RuntimeException("Wrong input");
-                    }
-                    if (splittedLine2.length == 2 && splittedLine.length == 2) {
-                        return splittedLine[1].compareTo(splittedLine2[1]);
-                    } else {
-                        throw new RuntimeException("Wrong input");
-                    }
-                }
-            });
+            Collections.sort(array, ASC);
         }
         if (type.equals("DESC")) {
-            Arrays.sort(array, new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    String[] splittedLine = o1.split(" ");
-                    String[] splittedLine2 = o2.split(" ");
-                    if ((splittedLine2.length > 2) || (splittedLine2.length == 0) || (splittedLine.length > 2) ||
-                        (splittedLine.length == 0)) {
-                        throw new RuntimeException("Wrong input");
-                    }
-                    if (splittedLine2.length == 2 && splittedLine.length == 2) {
-                        return splittedLine2[1].compareTo(splittedLine[1]);
-                    } else {
-                        throw new RuntimeException("Wrong input");
-                    }
-                }
-            });
+            Collections.sort(array, DESC);
         }
-        for(String fullname: array){
-            String[] splittedLine = fullname.split(" ");
-            if(splittedLine.length == 2){
-                contacts.add(new Contact(splittedLine[0], splittedLine[1]));
-            } else {
-                contacts.add(new Contact(splittedLine[0]));
-            }
-        }
-        return contacts;
     }
 }
 
