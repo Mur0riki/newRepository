@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Task2 {
     public static List<LocalDate> findFridayTheThirteenths(int year) {
-        List fridayTheThirteenths = new ArrayList<>();
+        List<LocalDate> fridayTheThirteenths = new ArrayList<>();
         LocalDate date = LocalDate.of(year, 1, 13); // Начинаем с 13-го января указанного года
         for (int month = 1; month <= 12; month++) {
             DayOfWeek dayOfWeek = date.getDayOfWeek();
@@ -19,9 +19,8 @@ public class Task2 {
         return fridayTheThirteenths;
     }
     public LocalDate findTheNearestNextFridayTheThirteenths(LocalDate date){
-        List<LocalDate> fridayTheThirteenths = new ArrayList<>();
+        List<LocalDate> fridayTheThirteenths = findFridayTheThirteenths(date.getYear());
         LocalDate date1 = null;
-        fridayTheThirteenths = findFridayTheThirteenths(date.getYear());
         for(LocalDate date2:fridayTheThirteenths){
             if(date2.isBefore(date) && !date1.equals(null)){
                 date1 = date2;
