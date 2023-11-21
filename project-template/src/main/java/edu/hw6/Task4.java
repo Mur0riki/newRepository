@@ -31,7 +31,7 @@ public class Task4 {
                 System.out.println("Checksum: " + checkedOutputStream.getChecksum().getValue());
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Ошибка при записи в файл: " + e.getMessage());
             }
         }
     }

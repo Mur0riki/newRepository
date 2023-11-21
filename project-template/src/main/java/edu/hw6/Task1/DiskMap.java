@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.Task1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,14 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.UncheckedIOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-public class Task1 {
     public class DiskMap<K, V> implements Map<K, V> {
         private File file;
 
@@ -26,8 +23,7 @@ public class Task1 {
             try {
                 return readMapFromFile().size();
             } catch (IOException e) {
-                e.printStackTrace();
-                return 0;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -36,8 +32,7 @@ public class Task1 {
             try {
                 return readMapFromFile().isEmpty();
             } catch (IOException e) {
-                e.printStackTrace();
-                return true;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -46,8 +41,7 @@ public class Task1 {
             try {
                 return readMapFromFile().containsKey(key);
             } catch (IOException e) {
-                e.printStackTrace();
-                return false;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -56,8 +50,7 @@ public class Task1 {
             try {
                 return readMapFromFile().containsValue(value);
             } catch (IOException e) {
-                e.printStackTrace();
-                return false;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -66,8 +59,7 @@ public class Task1 {
             try {
                 return readMapFromFile().get(key);
             } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -79,8 +71,7 @@ public class Task1 {
                 writeMapToFile(map);
                 return previousValue;
             } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -92,8 +83,7 @@ public class Task1 {
                 writeMapToFile(map);
                 return removedValue;
             } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -104,7 +94,7 @@ public class Task1 {
                 map.putAll(m);
                 writeMapToFile(map);
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -113,7 +103,7 @@ public class Task1 {
             try {
                 writeMapToFile(new HashMap<>());
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -122,8 +112,7 @@ public class Task1 {
             try {
                 return readMapFromFile().keySet();
             } catch (IOException e) {
-                e.printStackTrace();
-                return new HashSet<>();
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -132,8 +121,7 @@ public class Task1 {
             try {
                 return readMapFromFile().values();
             } catch (IOException e) {
-                e.printStackTrace();
-                return new ArrayList<>();
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -142,8 +130,7 @@ public class Task1 {
             try {
                 return readMapFromFile().entrySet();
             } catch (IOException e) {
-                e.printStackTrace();
-                return new HashSet<>();
+                throw new UncheckedIOException(e);
             }
         }
 
@@ -178,4 +165,3 @@ public class Task1 {
             }
         }
     }
-}

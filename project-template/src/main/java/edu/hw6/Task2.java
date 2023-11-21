@@ -14,11 +14,13 @@ public class Task2 {
                     extension = fileName.substring(dotIndex);
                     fileName = fileName.substring(0, dotIndex);
                 }
-                // Генерируем новое имя файла
-                String cloneFileName = fileName + " (копия)" + extension;
+                int copyIndex = 1;
                 // Создаем путь к новому файлу
-                Path clonePath = path.resolveSibling(cloneFileName);
-
+                Path clonePath = path.resolveSibling(fileName + " — копия" + extension);
+                while(Files.exists(clonePath)) {
+                    copyIndex++;
+                    clonePath = path.resolveSibling(fileName + " — копия (" + copyIndex + ")" + extension);
+                }
                 // Копируем файл с новым именем
                 Files.copy(path, clonePath);
 
