@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.task5;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
