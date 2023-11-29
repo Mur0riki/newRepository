@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.task2;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

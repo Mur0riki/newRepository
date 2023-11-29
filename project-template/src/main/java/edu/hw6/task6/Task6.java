@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.task6;
 
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
