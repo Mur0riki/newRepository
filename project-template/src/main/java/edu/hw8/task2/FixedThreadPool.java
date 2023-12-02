@@ -19,11 +19,15 @@ public class FixedThreadPool implements ThreadPool {
     public void start() {
         for (int i = 0; i < threads.length; i++) {
             threads[i] = new Thread(() -> {
-                while (true) {
+                while (Thread.currentThread().isInterrupted()) {
                     try {
                         Runnable task = queue.take();
                         task.run();
                     } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                    catch (RuntimeException e) {
                         Thread.currentThread().interrupt();
                         break;
                     }
