@@ -1,9 +1,9 @@
 package edu.hw9.task1;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -12,7 +12,7 @@ class StatsCollector {
     private ExecutorService executor;
 
     public StatsCollector() {
-        this.data = new HashMap<>();
+        this.data = new ConcurrentHashMap<>();
         this.executor = Executors.newCachedThreadPool();
     }
 
